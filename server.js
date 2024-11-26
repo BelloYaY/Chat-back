@@ -12,7 +12,7 @@ app.use(cors()); // Enable CORS for front-end communication
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "https://belloyay.github.io/Chat-Front/", // Allow your front-end domain
+        origin: "https://belloyay.github.io", // Allow your front-end domain
         methods: ["GET", "POST"]
     }
 });
