@@ -6,14 +6,23 @@ const cors = require('cors');
 
 // Create an Express app
 const app = express();
-app.use(cors()); // Enable CORS for front-end communication
+
+// CORS configuration to allow your front-end URL
+const corsOptions = {
+    origin: 'https://belloyay.github.io',  // Allow only your front-end domain
+    methods: ["GET", "POST"],
+    allowedHeaders: ['Content-Type'],
+};
+
+// Use CORS middleware globally for Express
+app.use(cors(corsOptions));
 
 // Create HTTP server and integrate Socket.IO
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "https://belloyay.github.io", // Allow your front-end domain
-        methods: ["GET", "POST"]
+        origin: 'https://belloyay.github.io', // Allow only your front-end domain
+        methods: ["GET", "POST"],
     }
 });
 
